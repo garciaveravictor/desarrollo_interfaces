@@ -44,10 +44,10 @@ public class Tarea431 extends Application {
         AnchorPane.setTopAnchor(boton2, 250.0); 
         AnchorPane.setLeftAnchor(boton2, 200.0); 
         
+        //Aniadir al layout
         root.getChildren().add(boton1);
         root.getChildren().add(boton2);
         root.getChildren().add(circulo);
-        
         
         Scene scene = new Scene(root, 300, 300);
         
