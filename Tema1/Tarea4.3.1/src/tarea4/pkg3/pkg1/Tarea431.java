@@ -30,8 +30,11 @@ public class Tarea431 extends Application {
         
         //Agrandar
         Button boton2 = new Button("Enlarge");
-        boton2.setOnAction((ActionEvent event) -> {
-            circulo.setRadius(circulo.getRadius()+10);
+        boton2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                circulo.setRadius(circulo.getRadius()+10);
+            }
         });
         
         AnchorPane root = new AnchorPane();
