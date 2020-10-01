@@ -22,7 +22,7 @@ public class Tarea434 extends Application {
     public void start(Stage primaryStage) {
         
         //Text 
-        Text texto = new Text(100, 50,"Programin is fun");
+        Text texto = new Text(100, 50, "Programin is fun");
 
         Pane root = new Pane();
         
