@@ -8,6 +8,7 @@ package tarea4.pkg3.pkg3;
 import java.text.DecimalFormat;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,9 +28,7 @@ public class Tarea433 extends Application {
     public void start(Stage primaryStage) {
         
         Button calcular = new Button("Calculate");
-        
-        
-        
+              
         //Tittles
         Label interest = new Label("Annual Interest Rate: ");
         Label year = new Label("Number of Years: ");
@@ -68,9 +67,7 @@ public class Tarea433 extends Application {
         root.add(error, 0, 5);
         
         calcular.setOnAction((ActionEvent event) -> {
-            
             double interesRate, numYear, lAmount;
-            
             try {
                 interesRate = Double.parseDouble(interestTf.getText());
                 numYear = Double.parseDouble(yearTf.getText());
@@ -82,15 +79,11 @@ public class Tarea433 extends Application {
                 
                 return;
             }
-            
             double mensual, aux;
-            
             aux = interesRate / (100 * 12);
             mensual = (lAmount * aux)/(1 - Math.pow( (1 + aux), - 12 * numYear));
-            
             mPaymentTf.setText("$" + new DecimalFormat("#.##").format(mensual));
-            tPaymentTf.setText("$" + new DecimalFormat("#.##").format(mensual * 12 * numYear)); 
-            
+            tPaymentTf.setText("$" + new DecimalFormat("#.##").format(mensual * 12 * numYear));
         });
         
         Scene scene = new Scene(root, 300, 250);
