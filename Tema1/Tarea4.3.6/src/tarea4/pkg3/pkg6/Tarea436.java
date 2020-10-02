@@ -15,7 +15,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.StrokeType;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -30,12 +29,11 @@ public class Tarea436 extends Application {
 
         //Instanciar circulo
         Circle circulo = new Circle(150, 150, 100, Color.web("white"));
-        circulo.setStroke(Color.web("black"));
-        circulo.setStrokeType(StrokeType.OUTSIDE);
+        circulo.setStroke(Color.BLACK);
         circulo.setStrokeWidth(2); 
         
         //Instanciar rectangulo
-        Rectangle rectangulo = new Rectangle(100, 50, Color.web("orange"));
+        Rectangle rectangulo = new Rectangle(100, 50, Color.ORANGE);
         
         //Animacion
         PathTransition path = new PathTransition();
