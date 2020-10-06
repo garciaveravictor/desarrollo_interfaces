@@ -1,4 +1,9 @@
-package set_dialog_opacity;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package modality.none;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -12,22 +17,24 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
  *
  * @author Victor Garcia Vera 2DAM
  */
-public class MyDialog extends Stage {
-
-    public MyDialog(Stage owner) {
-        
+public class MyDialog extends Stage{
+    
+     public MyDialog(Stage owner) {
+         
         super();
         initOwner(owner);
         setTitle("title");
-        setOpacity(.90);
+        initModality(Modality.NONE);
         
         Group root = new Group();
+        
         Scene scene = new Scene(root, 250, 150, Color.WHITE);
         setScene(scene);
 
@@ -56,10 +63,8 @@ public class MyDialog extends Stage {
                 close();
             }
         });
-        
         gridpane.add(login, 1, 3);
         GridPane.setHalignment(login, HPos.RIGHT);
         root.getChildren().add(gridpane);
     }
-
 }
