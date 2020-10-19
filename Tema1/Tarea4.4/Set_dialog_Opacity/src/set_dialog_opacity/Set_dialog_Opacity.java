@@ -17,13 +17,28 @@ public class Set_dialog_Opacity extends Application {
     }
 
     @Override
+<<<<<<< Updated upstream
     public void start(final Stage primaryStage) {
+=======
+    public void start(Stage primaryStage) {
+>>>>>>> Stashed changes
         primaryStage.setTitle("Dialog");
         Group root = new Group();
         Scene scene = new Scene(root, 400, 300, Color.WHITE);
 
+<<<<<<< Updated upstream
         primaryStage.setScene(scene);
         primaryStage.show();
+=======
+        
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        
+        Stage myDialog = new MyDialog(primaryStage);
+        myDialog.sizeToScene();
+        myDialog.show();
+    }
+>>>>>>> Stashed changes
 
         Stage myDialog = new MyDialog(primaryStage);
         myDialog.sizeToScene();

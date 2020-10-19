@@ -46,8 +46,8 @@ public class Tarea435 extends Application {
                 case UP:
                     texto.setY(texto.getY() - 10);
                     break;
-                default:   //TODO arreglar 
-                    texto.setText(evento.getCode());
+                default:   
+                    texto.setText(evento.getCode().toString());
                     break;
             }
             

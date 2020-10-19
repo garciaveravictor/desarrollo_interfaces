@@ -5,23 +5,29 @@
  */
 package colorfulcircles;
 
-import com.sun.javafx.geom.Rectangle;
 import javafx.application.Application;
-import static javafx.application.Application.launch;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 import javafx.stage.Stage;
+import static java.lang.Math.random;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.scene.Node;
+import javafx.util.Duration;
 
 /**
  *
- * @author usuario
+ * @author Usuario
  */
 public class ColorfulCircles extends Application {
 
@@ -39,7 +45,6 @@ public class ColorfulCircles extends Application {
             circle.setStrokeWidth(4);
             circles.getChildren().add(circle);
         }
-        root.getChildren().add(circles);
 
         Rectangle colors = new Rectangle(scene.getWidth(), scene.getHeight(),
                 new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE, new Stop[]{
@@ -53,17 +58,36 @@ public class ColorfulCircles extends Application {
             new Stop(1, Color.web("#f2660f")),}));
         colors.widthProperty().bind(scene.widthProperty());
         colors.heightProperty().bind(scene.heightProperty());
-        root.getChildren().add(colors);
+
+        Group blendModeGroup
+                = new Group(new Group(new Rectangle(scene.getWidth(), scene.getHeight(),
+                        Color.BLACK), circles), colors);
+        colors.setBlendMode(BlendMode.OVERLAY);
+        root.getChildren().add(blendModeGroup);
+
         circles.setEffect(new BoxBlur(10, 10, 3));
+
+        Timeline timeline = new Timeline();
+        for (Node circle: circles.getChildren()) {
+            timeline.getKeyFrames().addAll(
+                new KeyFrame(Duration.ZERO, // set start position at 0
+                    new KeyValue(circle.translateXProperty(), random() * 800),
+                    new KeyValue(circle.translateYProperty(), random() * 600)
+                ),
+                new KeyFrame(new Duration(40000), // set end position at 40s
+                    new KeyValue(circle.translateXProperty(), random() * 800),
+                    new KeyValue(circle.translateYProperty(), random() * 600)
+                )
+            );
+        }        
+        // play 40s of animation
+        
+        timeline.play();
 
         primaryStage.show();
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         launch(args);
     }
-
 }
